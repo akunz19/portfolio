@@ -1,0 +1,640 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:100");
+html,
+body,
+h1 {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+#app {
+  overflow: scroll !important;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: unset;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(0, 0, 0, 0.9)),
+    repeating-linear-gradient(
+      0,
+      transparent,
+      transparent 2px,
+      black 3px,
+      black 3px
+    ),
+    url(https://images.unsplash.com/photo-1561041230-718934bc26cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1349&q=80);
+  background-size: cover;
+  background-position: unset;
+  background-repeat: repeat;
+  z-index: 1;
+}
+#wrapper {
+  text-align: center;
+}
+.sub {
+  color: #64dcdc;
+  letter-spacing: 1em;
+}
+/* Our mixin positions a copy of our text
+ directly on our existing text, while
+ also setting content to the appropriate
+ text set in the data-text attribute. */
+.glitch {
+  position: relative;
+  color: white;
+  font-size: 4em;
+  letter-spacing: 0.5em;
+  /* Animation provies a slight random skew. Check bottom of doc
+   for more information on how to random skew. */
+  animation: glitch-skew 1s infinite linear alternate-reverse;
+  margin-bottom: 4%;
+}
+.glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  left: 2px;
+  text-shadow: -2px 0 #ff00c1;
+  /* Creates an initial clip for our glitch. This works in
+   a typical top,right,bottom,left fashion and creates a mask
+   to only show a certain part of the glitch at a time. */
+  clip: rect(44px, 450px, 56px, 0);
+  /* Runs our glitch-anim defined below to run in a 5s loop, infinitely,
+   with an alternating animation to keep things fresh. */
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  left: -2px;
+  text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+  animation: glitch-anim2 1s infinite linear alternate-reverse;
+}
+/* Creates an animation with 20 steaps. For each step, it calculates 
+ a percentage for the specific step. It then generates a random clip
+ box to be used for the random glitch effect. Also adds a very subtle
+ skew to change the 'thickness' of the glitch.*/
+@keyframes glitch-anim {
+  0% {
+    clip: rect(31px, 9999px, 6px, 0);
+    transform: skew(0.11deg);
+  }
+  5% {
+    clip: rect(97px, 9999px, 99px, 0);
+    transform: skew(0.97deg);
+  }
+  10% {
+    clip: rect(8px, 9999px, 39px, 0);
+    transform: skew(0.45deg);
+  }
+  15% {
+    clip: rect(59px, 9999px, 89px, 0);
+    transform: skew(0.64deg);
+  }
+  20% {
+    clip: rect(11px, 9999px, 71px, 0);
+    transform: skew(0.57deg);
+  }
+  25% {
+    clip: rect(12px, 9999px, 47px, 0);
+    transform: skew(0.74deg);
+  }
+  30% {
+    clip: rect(5px, 9999px, 52px, 0);
+    transform: skew(0.79deg);
+  }
+  35% {
+    clip: rect(75px, 9999px, 42px, 0);
+    transform: skew(0.53deg);
+  }
+  40% {
+    clip: rect(52px, 9999px, 97px, 0);
+    transform: skew(0.49deg);
+  }
+  45% {
+    clip: rect(7px, 9999px, 49px, 0);
+    transform: skew(0.97deg);
+  }
+  50% {
+    clip: rect(7px, 9999px, 49px, 0);
+    transform: skew(0.47deg);
+  }
+  55% {
+    clip: rect(53px, 9999px, 42px, 0);
+    transform: skew(0.75deg);
+  }
+  60% {
+    clip: rect(71px, 9999px, 9px, 0);
+    transform: skew(0.1deg);
+  }
+  65% {
+    clip: rect(5px, 9999px, 70px, 0);
+    transform: skew(0.24deg);
+  }
+  70% {
+    clip: rect(75px, 9999px, 45px, 0);
+    transform: skew(0.85deg);
+  }
+  75% {
+    clip: rect(40px, 9999px, 34px, 0);
+    transform: skew(0.27deg);
+  }
+  80% {
+    clip: rect(67px, 9999px, 13px, 0);
+    transform: skew(0.51deg);
+  }
+  85% {
+    clip: rect(64px, 9999px, 55px, 0);
+    transform: skew(0.86deg);
+  }
+  90% {
+    clip: rect(99px, 9999px, 23px, 0);
+    transform: skew(0.65deg);
+  }
+  95% {
+    clip: rect(12px, 9999px, 100px, 0);
+    transform: skew(0.15deg);
+  }
+  100% {
+    clip: rect(42px, 9999px, 20px, 0);
+    transform: skew(0.28deg);
+  }
+}
+@keyframes glitch-anim2 {
+  0% {
+    clip: rect(26px, 9999px, 79px, 0);
+    transform: skew(0.17deg);
+  }
+  5% {
+    clip: rect(2px, 9999px, 54px, 0);
+    transform: skew(0.09deg);
+  }
+  10% {
+    clip: rect(98px, 9999px, 8px, 0);
+    transform: skew(0.37deg);
+  }
+  15% {
+    clip: rect(99px, 9999px, 95px, 0);
+    transform: skew(0.98deg);
+  }
+  20% {
+    clip: rect(8px, 9999px, 38px, 0);
+    transform: skew(0.18deg);
+  }
+  25% {
+    clip: rect(43px, 9999px, 43px, 0);
+    transform: skew(0.26deg);
+  }
+  30% {
+    clip: rect(64px, 9999px, 13px, 0);
+    transform: skew(0.48deg);
+  }
+  35% {
+    clip: rect(48px, 9999px, 38px, 0);
+    transform: skew(0.1deg);
+  }
+  40% {
+    clip: rect(77px, 9999px, 27px, 0);
+    transform: skew(0.35deg);
+  }
+  45% {
+    clip: rect(77px, 9999px, 43px, 0);
+    transform: skew(0.17deg);
+  }
+  50% {
+    clip: rect(36px, 9999px, 47px, 0);
+    transform: skew(0.15deg);
+  }
+  55% {
+    clip: rect(59px, 9999px, 12px, 0);
+    transform: skew(0.68deg);
+  }
+  60% {
+    clip: rect(4px, 9999px, 42px, 0);
+    transform: skew(0.72deg);
+  }
+  65% {
+    clip: rect(86px, 9999px, 74px, 0);
+    transform: skew(0.38deg);
+  }
+  70% {
+    clip: rect(20px, 9999px, 76px, 0);
+    transform: skew(0.16deg);
+  }
+  75% {
+    clip: rect(16px, 9999px, 65px, 0);
+    transform: skew(0.58deg);
+  }
+  80% {
+    clip: rect(21px, 9999px, 56px, 0);
+    transform: skew(0.53deg);
+  }
+  85% {
+    clip: rect(97px, 9999px, 42px, 0);
+    transform: skew(0.82deg);
+  }
+  90% {
+    clip: rect(49px, 9999px, 65px, 0);
+    transform: skew(0.56deg);
+  }
+  95% {
+    clip: rect(66px, 9999px, 40px, 0);
+    transform: skew(0.51deg);
+  }
+  100% {
+    clip: rect(64px, 9999px, 15px, 0);
+    transform: skew(0.53deg);
+  }
+}
+@keyframes glitch-skew {
+  0% {
+    transform: skew(3deg);
+  }
+  10% {
+    transform: skew(3deg);
+  }
+  20% {
+    transform: skew(-3deg);
+  }
+  30% {
+    transform: skew(0deg);
+  }
+  40% {
+    transform: skew(1deg);
+  }
+  50% {
+    transform: skew(-2deg);
+  }
+  60% {
+    transform: skew(3deg);
+  }
+  70% {
+    transform: skew(3deg);
+  }
+  80% {
+    transform: skew(-3deg);
+  }
+  90% {
+    transform: skew(-1deg);
+  }
+  100% {
+    transform: skew(-2deg);
+  }
+}
+/* @import url(//fonts.googleapis.com/css?family=Vibur); */
+
+.logo {
+  text-align: center;
+  width: 65%;
+  height: 250px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  user-select: none;
+}
+
+.logo b {
+  font: 400 19vh "Vibur";
+  color: #fee;
+  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #68d5fe, 0 0 0.5em #68d5fe,
+    0 0 0.1em #68d5fe, 0 10px 3px #000;
+}
+.logo b span {
+  animation: blink linear infinite 2s;
+}
+.logo b span:nth-of-type(2) {
+  animation: blink linear infinite 3s;
+}
+@keyframes blink {
+  78% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  79% {
+    color: #333;
+  }
+  80% {
+    text-shadow: none;
+  }
+  81% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  82% {
+    color: #333;
+    text-shadow: none;
+  }
+  83% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  92% {
+    color: #333;
+    text-shadow: none;
+  }
+  92.5% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 3%;
+}
+.the-arrow {
+  width: 64px;
+  transition: all 0.2s;
+}
+.the-arrow.-left {
+  position: absolute;
+  top: 60%;
+  left: 0;
+}
+.the-arrow.-left > .shaft {
+  width: 0;
+  background-color: #999;
+}
+.the-arrow.-left > .shaft:before,
+.the-arrow.-left > .shaft:after {
+  width: 0;
+  background-color: #999;
+}
+.the-arrow.-left > .shaft:before {
+  transform: rotate(0);
+}
+.the-arrow.-left > .shaft:after {
+  transform: rotate(0);
+}
+.the-arrow.-right {
+  top: 3px;
+}
+.the-arrow.-right > .shaft {
+  width: 64px;
+  transition-delay: 0.2s;
+}
+.the-arrow.-right > .shaft:before,
+.the-arrow.-right > .shaft:after {
+  width: 8px;
+  transition-delay: 0.3s;
+  transition: all 0.5s;
+}
+.the-arrow.-right > .shaft:before {
+  transform: rotate(40deg);
+}
+.the-arrow.-right > .shaft:after {
+  transform: rotate(-40deg);
+}
+.the-arrow > .shaft {
+  background-color: #999;
+  display: block;
+  height: 1px;
+  position: relative;
+  transition: all 0.2s;
+  transition-delay: 0;
+  will-change: transform;
+}
+.the-arrow > .shaft:before,
+.the-arrow > .shaft:after {
+  background-color: #999;
+  content: "";
+  display: block;
+  height: 1px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: all 0.2s;
+  transition-delay: 0;
+}
+.the-arrow > .shaft:before {
+  transform-origin: top right;
+}
+.the-arrow > .shaft:after {
+  transform-origin: bottom right;
+}
+.animated-arrow {
+  display: inline-block;
+  color: #999;
+  font-size: 1.25em;
+  font-style: italic;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.2s;
+}
+.animated-arrow:hover {
+  color: #eaeaea;
+}
+.animated-arrow:hover > .the-arrow.-left > .shaft {
+  width: 64px;
+  transition-delay: 0.1s;
+  background-color: #eaeaea;
+}
+.animated-arrow:hover > .the-arrow.-left > .shaft:before,
+.animated-arrow:hover > .the-arrow.-left > .shaft:after {
+  width: 8px;
+  transition-delay: 0.1s;
+  background-color: #eaeaea;
+}
+.animated-arrow:hover > .the-arrow.-left > .shaft:before {
+  transform: rotate(40deg);
+}
+.animated-arrow:hover > .the-arrow.-left > .shaft:after {
+  transform: rotate(-40deg);
+}
+.animated-arrow:hover > .main {
+  transform: translateX(80px);
+}
+.animated-arrow:hover > .main > .the-arrow.-right > .shaft {
+  width: 0;
+  transform: translateX(200%);
+  transition-delay: 0;
+}
+.animated-arrow:hover > .main > .the-arrow.-right > .shaft:before,
+.animated-arrow:hover > .main > .the-arrow.-right > .shaft:after {
+  width: 0;
+  transition-delay: 0;
+  transition: all 0.1s;
+}
+.animated-arrow:hover > .main > .the-arrow.-right > .shaft:before {
+  transform: rotate(0);
+}
+.animated-arrow:hover > .main > .the-arrow.-right > .shaft:after {
+  transform: rotate(0);
+}
+.animated-arrow > .main {
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+.animated-arrow > .main > .text {
+  margin: 0 16px 0 0;
+  line-height: 1;
+}
+.animated-arrow > .main > .the-arrow {
+  position: relative;
+}
+
+.container {
+  position: relative;
+  /* margin: 0 auto; */
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 42%;
+  /* background-color: #fff; */
+  width: calc(100% - 320px);
+  height: calc(100% - 320px);
+  /* overflow: hidden; */
+  float: left;
+}
+
+.about-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+.about-content {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+.img-portfolio {
+  max-width: 320px !important;
+  max-height: 320px !important;
+  float: left;
+  margin: 0 auto;
+}
+.about-text {
+  color: whitesmoke;
+  float: left;
+  margin: 0 auto;
+  width: 80%;
+  font-size: larger;
+  line-height: 30px;
+}
+
+.portfolio-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 3%;
+}
+.glitch-img {
+  position: absolute;
+  max-width: 320px !important;
+  max-height: 320px !important;
+  top: 0;
+  left: 0;
+  background-position: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+  opacity: 0.6;
+}
+.portfolio-btn-text {
+  margin: 0px 16px 0px 324px !important;
+  line-height: 1 !important;
+}
+
+.triangle-up {
+  width: 166px;
+  height: 166px;
+  background: url(../images/2141907.jpg);
+  background-position-x: right;
+  background-position-y: center;
+  background-size: unset;
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  position: absolute;
+  z-index: 5;
+  opacity: 0.8;
+  border: aqua;
+  border-style: solid;
+  margin: 8%;
+}
+
+.triangle-bottom {
+  width: 166px;
+  height: 166px;
+  background-position-x: right;
+  background-position-y: center;
+  background-size: unset;
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  position: absolute;
+  z-index: 5;
+  opacity: 0.8;
+  border: aqua;
+  border-style: solid;
+  margin: 8%;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+.triangle-up-behind {
+  width: 167px;
+  height: 167px;
+  position: absolute;
+  background-color: purple;
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+}
+
+.triangle-cont {
+  text-align: center;
+  position: relative;
+  display: block;
+  height: 200px;
+  width: 200px;
+  border: rgb(255, 165, 0, 0.4);
+  padding: 1%;
+  margin: 6%;
+  border-style: solid;
+}
+
+.triangle-up:hover {
+  opacity: 0;
+}
+
+.card-cont {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 28%;
+  padding: 11%;
+}
+#portfolio-header {
+  display: flex;
+  flex-flow: row wrap;
+}
+.portfolio-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.home-button-container {
+  margin-left: -12%;
+  margin-top: 13%;
+}
